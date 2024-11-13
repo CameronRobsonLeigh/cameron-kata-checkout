@@ -1,4 +1,4 @@
-﻿namespace cameron_kata_checkout
+﻿namespace Cameron.Katka.ClassLibrary
 {
     public class Class1
     {
