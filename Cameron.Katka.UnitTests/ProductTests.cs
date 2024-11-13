@@ -1,6 +1,8 @@
+using Cameron.Katka.ClassLibrary.Models;
+
 namespace Cameron.Katka.UnitTests
 {
-    public class Tests
+    internal class ProductTests
     {
         [SetUp]
         public void Setup()
@@ -15,7 +17,7 @@ namespace Cameron.Katka.UnitTests
             Assert.IsInstanceOf<decimal>(product.UnitPrice);
             Assert.IsInstanceOf<int>(product.DiscountUnits);
             Assert.IsInstanceOf<decimal>(product.DiscountUnitPrice);
-
         }
+
     }
 }
