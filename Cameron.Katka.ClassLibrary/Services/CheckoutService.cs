@@ -7,6 +7,9 @@ namespace Cameron.Katka.ClassLibrary.Services
         private List<Product> _basket = new List<Product>();
         public int Scan(Product product)
         {
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
+
             _basket.Add(product);
 
             return _basket.Count;
