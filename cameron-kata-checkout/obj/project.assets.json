@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Camer\\source\\repos\\cameron-kata-checkout\\cameron-kata-checkout\\cameron-kata-checkout.csproj",
-      "projectName": "cameron-kata-checkout",
-      "projectPath": "C:\\Users\\Camer\\source\\repos\\cameron-kata-checkout\\cameron-kata-checkout\\cameron-kata-checkout.csproj",
+      "projectUniqueName": "C:\\Users\\Camer\\source\\repos\\cameron-kata-checkout\\cameron-kata-checkout\\Cameron.Katka.ClassLibrary.csproj",
+      "projectName": "Cameron.Katka.ClassLibrary",
+      "projectPath": "C:\\Users\\Camer\\source\\repos\\cameron-kata-checkout\\cameron-kata-checkout\\Cameron.Katka.ClassLibrary.csproj",
       "packagesPath": "C:\\Users\\Camer\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Camer\\source\\repos\\cameron-kata-checkout\\cameron-kata-checkout\\obj\\",
       "projectStyle": "PackageReference",
