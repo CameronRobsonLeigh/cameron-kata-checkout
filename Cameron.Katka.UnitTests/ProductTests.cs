@@ -9,6 +9,7 @@ namespace Cameron.Katka.UnitTests
         {
         }
 
+        // Basic product test, kept this in a seperate set of tests in case we ever need to ammend the original structure
         [Test]
         public void Product_Should_Have_Required_Data()
         {
