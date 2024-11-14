@@ -137,5 +137,21 @@ namespace Cameron.Katka.UnitTests
             Assert.That(retrieveTotal, Is.EqualTo(150.00m));
         }
 
+
+        [Test]
+        public void Calculate_Total_Price_Just_No_Discounts()
+        {
+            Product prod = new Product("C", 20.00m);
+            Product prod2 = new Product("C", 20.00m);
+            Product prod3 = new Product("D", 15.00m);
+
+            int scanProd = _checkoutService.Scan(prod);
+            int scanProd2 = _checkoutService.Scan(prod2);
+            int scanProd3 = _checkoutService.Scan(prod3);
+
+            decimal retrieveTotal = _checkoutService.GetTotalPrice();
+
+            Assert.That(retrieveTotal, Is.EqualTo(55.00m));
+        }
     }
 }
