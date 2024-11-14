@@ -88,7 +88,14 @@ namespace Cameron.Katka.UnitTests
             decimal retrieveTotal = _checkoutService.GetTotalPrice();
 
             Assert.That(retrieveTotal, Is.EqualTo(110.00m));
+        }
 
+        [Test]
+        public void Check_Total_Should_Be_0_When_Empty_Basket()
+        {
+            decimal retrieveTotal = _checkoutService.GetTotalPrice();
+
+            Assert.That(retrieveTotal, Is.EqualTo(0));
         }
     }
 }
