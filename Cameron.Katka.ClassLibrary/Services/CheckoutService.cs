@@ -29,7 +29,18 @@ namespace Cameron.Katka.ClassLibrary.Services
             {
                 // get first option in group so we can interact with the data (should be consistent across the SKU group)
                 // retrieve highest discount price if they discount prices are different per group
-                var product = group.OrderByDescending(p => p.DiscountUnitPrice).FirstOrDefault();
+                Product? product = group.OrderByDescending(p => p.DiscountUnitPrice).FirstOrDefault();
+
+                if (product.SKU == "A" && (product.DiscountUnitPrice == null || product.DiscountUnits == null))
+                {
+                    product.DiscountUnitPrice = 130.00M;
+                    product.DiscountUnits = 3;
+                }
+                else if (product.SKU == "B" && (product.DiscountUnitPrice == null || product.DiscountUnits == null))
+                {
+                    product.DiscountUnitPrice = 45.00M;
+                    product.DiscountUnits = 2;
+                }
 
                 int discountBundles = group.Count() / product.DiscountUnits.GetValueOrDefault(1);
                 // calculate what is left, e.g. if there is 4 A products, then we discount the 3 but leave the remaining 1 at full price
