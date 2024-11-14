@@ -28,7 +28,8 @@ namespace Cameron.Katka.ClassLibrary.Services
             foreach (var group in groupedProducts)
             {
                 // get first option in group so we can interact with the data (should be consistent across the SKU group)
-                var product = group.First();
+                // retrieve highest discount price if they discount prices are different per group
+                var product = group.OrderByDescending(p => p.DiscountUnitPrice).FirstOrDefault();
 
                 int discountBundles = group.Count() / product.DiscountUnits.GetValueOrDefault(1);
                 // calculate what is left, e.g. if there is 4 A products, then we discount the 3 but leave the remaining 1 at full price
