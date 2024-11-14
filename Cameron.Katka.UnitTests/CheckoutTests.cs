@@ -97,5 +97,23 @@ namespace Cameron.Katka.UnitTests
 
             Assert.That(retrieveTotal, Is.EqualTo(0));
         }
+
+
+        [Test]
+        public void Calculate_Total_With_Different_Products()
+        {
+            Product prod = new Product("B", 30.00m, 2, 45.00m);
+            Product prod2 = new Product("A", 50.00m, 3, 130.00m);
+            Product prod3 = new Product("B", 30.00m, 2, 45.00m);
+
+            int scanProd = _checkoutService.Scan(prod);
+            int scanProd2 = _checkoutService.Scan(prod2);
+            int scanProd3 = _checkoutService.Scan(prod3);
+
+            decimal retrieveTotal = _checkoutService.GetTotalPrice();
+
+            Assert.That(retrieveTotal, Is.EqualTo(95.00m));
+        }
+
     }
 }
