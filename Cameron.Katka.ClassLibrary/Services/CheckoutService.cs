@@ -31,6 +31,10 @@ namespace Cameron.Katka.ClassLibrary.Services
                 // retrieve highest discount price if they discount prices are different per group
                 Product? product = group.OrderByDescending(p => p.DiscountUnitPrice).FirstOrDefault();
 
+                // don't think this is needed as we check for null in the scan phase but keeps warnings happy
+                if (product == null)
+                    continue; 
+
                 if (product.SKU == "A" && (product.DiscountUnitPrice == null || product.DiscountUnits == null && group.Count() >= 3))
                 {
                     product.DiscountUnitPrice = 130.00M;
