@@ -18,7 +18,7 @@ namespace Cameron.Katka.UnitTests
         {
             Product product = new Product("A", 50.00m, 3, 130.00m);
             int productCount = _checkoutService.Scan(product);
-            Assert.AreEqual(1, productCount);
+            Assert.That(productCount, Is.EqualTo(1));
         }
 
         [Test]
@@ -41,9 +41,9 @@ namespace Cameron.Katka.UnitTests
             Product product2 = new Product("B", 30.00m, 2, 25.00m);
 
             _checkoutService.Scan(product1); 
-            int countAfterFirstScan = _checkoutService.Scan(product2); 
+            int countAfterFirstScan = _checkoutService.Scan(product2);
 
-            Assert.AreEqual(2, countAfterFirstScan);  
+            Assert.That(countAfterFirstScan, Is.EqualTo(2));
         }
 
         [Test]
@@ -51,11 +51,10 @@ namespace Cameron.Katka.UnitTests
         {
             Product prod = new Product("A", 50.00m, 1, 40.00m);
 
-            var scanProd = _checkoutService.Scan(prod);
-            var retrieveTotal = _checkoutService.GetTotalPrice();
+            int scanProd = _checkoutService.Scan(prod);
+            decimal retrieveTotal = _checkoutService.GetTotalPrice();
 
-            Assert.AreEqual(50.00m, retrieveTotal);
-
+            Assert.That(retrieveTotal, Is.EqualTo(50.00m));
         }
 
     }
