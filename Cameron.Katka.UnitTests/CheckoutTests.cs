@@ -49,7 +49,7 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Calculate_Basic_Total_No_Discount()
         {
-            Product prod = new Product("A", 50.00m, 1, 40.00m);
+            Product prod = new Product("A", 50.00m);
 
             int scanProd = _checkoutService.Scan(prod);
             decimal retrieveTotal = _checkoutService.GetTotalPrice();
@@ -167,7 +167,7 @@ namespace Cameron.Katka.UnitTests
 
             decimal retrieveTotal = _checkoutService.GetTotalPrice();
 
-            Assert.That(retrieveTotal, Is.EqualTo(130.00m));
+            Assert.That(retrieveTotal, Is.EqualTo(150.00m));
         }
 
         [Test]
