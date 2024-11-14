@@ -71,7 +71,6 @@ namespace Cameron.Katka.UnitTests
             decimal retrieveTotal = _checkoutService.GetTotalPrice();
 
             Assert.That(retrieveTotal, Is.EqualTo(130.00m));
-
         }
 
         [Test]
