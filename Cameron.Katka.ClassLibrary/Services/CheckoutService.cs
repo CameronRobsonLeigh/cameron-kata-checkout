@@ -36,10 +36,20 @@ namespace Cameron.Katka.ClassLibrary.Services
                     product.DiscountUnitPrice = 130.00M;
                     product.DiscountUnits = 3;
                 }
-                else if (product.SKU == "B" && (product.DiscountUnitPrice == null || product.DiscountUnits == null && group.Count() >= 3))
+                else if (product.SKU == "B" && (product.DiscountUnitPrice == null || product.DiscountUnits == null && group.Count() >= 2))
                 {
                     product.DiscountUnitPrice = 45.00M;
                     product.DiscountUnits = 2;
+                }
+                else if (product.SKU == "A" && group.Count() < 3)
+                {
+                    product.DiscountUnits = null;
+                    product.DiscountUnitPrice = null;
+                }
+                else if (product.SKU == "B" && group.Count() < 2)
+                {
+                    product.DiscountUnits = null;
+                    product.DiscountUnitPrice = null;
                 }
 
                 int discountBundles = group.Count() / product.DiscountUnits.GetValueOrDefault(1);
