@@ -31,12 +31,12 @@ namespace Cameron.Katka.ClassLibrary.Services
                 // retrieve highest discount price if they discount prices are different per group
                 Product? product = group.OrderByDescending(p => p.DiscountUnitPrice).FirstOrDefault();
 
-                if (product.SKU == "A" && (product.DiscountUnitPrice == null || product.DiscountUnits == null))
+                if (product.SKU == "A" && (product.DiscountUnitPrice == null || product.DiscountUnits == null && group.Count() >= 3))
                 {
                     product.DiscountUnitPrice = 130.00M;
                     product.DiscountUnits = 3;
                 }
-                else if (product.SKU == "B" && (product.DiscountUnitPrice == null || product.DiscountUnits == null))
+                else if (product.SKU == "B" && (product.DiscountUnitPrice == null || product.DiscountUnits == null && group.Count() >= 3))
                 {
                     product.DiscountUnitPrice = 45.00M;
                     product.DiscountUnits = 2;
