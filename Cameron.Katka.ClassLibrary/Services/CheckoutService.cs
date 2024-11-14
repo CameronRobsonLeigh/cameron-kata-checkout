@@ -17,5 +17,10 @@ namespace Cameron.Katka.ClassLibrary.Services
 
             return _basket.Count;
         }
+
+        public decimal GetTotalPrice()
+        {
+            return _basket.Sum(product => product.UnitPrice);
+        }
     }
 }
