@@ -35,10 +35,10 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void ScanMultipleProducts_Should_Increase_Basket_Count()
+        public void Scan_Multiple_Products_Should_Increase_Basket_Count()
         {
-            var product1 = new Product("A", 50.00m, 1, 40.00m);
-            var product2 = new Product("B", 30.00m, 2, 25.00m);
+            Product product1 = new Product("A", 50.00m, 1, 40.00m);
+            Product product2 = new Product("B", 30.00m, 2, 25.00m);
 
             _checkoutService.Scan(product1); 
             int countAfterFirstScan = _checkoutService.Scan(product2); 
