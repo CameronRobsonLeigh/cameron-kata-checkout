@@ -46,5 +46,17 @@ namespace Cameron.Katka.UnitTests
             Assert.AreEqual(2, countAfterFirstScan);  
         }
 
+        [Test]
+        public void Calculate_Basic_Total_No_Discount()
+        {
+            Product prod = new Product("A", 50.00m, 1, 40.00m);
+
+            var scanProd = _checkoutService.Scan(prod);
+            var retrieveTotal = _checkoutService.GetTotalPrice();
+
+            Assert.AreEqual(50.00m, retrieveTotal);
+
+        }
+
     }
 }
