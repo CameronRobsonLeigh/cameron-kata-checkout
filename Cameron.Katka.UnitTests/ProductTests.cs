@@ -18,7 +18,8 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Product_Should_Have_Required_Data()
         {
-            Product product = _context.ProductsContext.First(a => a.SKU == "A");
+            Product product = _context.ProductsQueryable.First(a => a.SKU == "A");
+            
 
             Assert.IsInstanceOf<string>(product.SKU);
             Assert.IsInstanceOf<decimal>(product.UnitPrice);

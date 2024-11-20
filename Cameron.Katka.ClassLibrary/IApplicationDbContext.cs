@@ -4,6 +4,8 @@ namespace Cameron.Katka.ClassLibrary
 {
     public interface IApplicationDbContext
     {
-        IQueryable<Product> ProductsContext { get; }
+        IQueryable<Product> ProductsQueryable { get; }
+
+        List<Product> ProductList { get; }
     }
 }
