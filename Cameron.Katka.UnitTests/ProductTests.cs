@@ -1,7 +1,8 @@
 using Cameron.Katka.ClassLibrary.Contexts;
+using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
-using Cameron.Katka.ClassLibrary.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Cameron.Katka.UnitTests
 {
@@ -9,13 +10,23 @@ namespace Cameron.Katka.UnitTests
     {
         private IProductRepository _productRepository;
         private IProductDbContext _context;
+        private IServiceCollection _serviceCollection;
 
         [SetUp]
         public void Setup()
         {
-            _context = new ProductDbContext();
-            _productRepository = new ProductRepository(_context);
+            _serviceCollection = new ServiceCollection();
+            _serviceCollection.AddInjection();
+
+            var _serviceProvider = _serviceCollection.BuildServiceProvider();
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                // Resolve dependencies from the scope
+                _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
+                _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
+            }
         }
+
 
         // Basic product test, kept this in a seperate set of tests in case we ever need to ammend the original structure
         [Test]
@@ -40,7 +51,6 @@ namespace Cameron.Katka.UnitTests
 
             Assert.IsNotNull(products, "The product list should not be null.");
         }
-
 
         [Test]
         public void Check_All__Discounted_Products_Repository()
