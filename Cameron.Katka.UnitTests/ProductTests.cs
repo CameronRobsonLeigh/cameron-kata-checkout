@@ -1,25 +1,27 @@
 using Cameron.Katka.ClassLibrary;
+using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
+using Cameron.Katka.ClassLibrary.Repositories;
 
 namespace Cameron.Katka.UnitTests
 {
     internal class ProductTests
     {
-        private ApplicationDbContext _context;
+        private IProductRepository _productRepository;
+        private IApplicationDbContext _context;
 
         [SetUp]
         public void Setup()
         {
-            // Initialize the ApplicationDbContext before each test
-            _context = new ApplicationDbContext();
+            _context = new ProductDbContext();
+            _productRepository = new ProductRepository(_context);
         }
 
         // Basic product test, kept this in a seperate set of tests in case we ever need to ammend the original structure
         [Test]
         public void Product_Should_Have_Required_Data()
         {
-            Product product = _context.ProductsQueryable.First(a => a.SKU == "A");
-            
+            Product product = _productRepository.FindProduct("A");       
 
             Assert.IsInstanceOf<string>(product.SKU);
             Assert.IsInstanceOf<decimal>(product.UnitPrice);
@@ -30,12 +32,14 @@ namespace Cameron.Katka.UnitTests
             }
         }
 
+        // Not a requirement for the task, but just showing capability of repositories and adhering to Single Responsibility
         [Test]
         public void Check_All_Products_Repository()
         {
-            var products = _repository.FindAllProducts();
+            var products = _productRepository.FindAllProducts();
 
             Assert.IsNotNull(products, "The product list should not be null.");
-        } 
+        }
+
     }
 }

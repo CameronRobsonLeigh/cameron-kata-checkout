@@ -1,12 +1,12 @@
 ﻿using Cameron.Katka.ClassLibrary.Models;
 
-namespace Cameron.Katka.ClassLibrary
+namespace Cameron.Katka.ClassLibrary.Contexts
 {
-    public class ApplicationDbContext : IApplicationDbContext
+    public class ProductDbContext : IProductDbContext
     {
         private List<Product> _products;
 
-        public ApplicationDbContext()
+        public ProductDbContext()
         {
             _products = new List<Product>
             {
