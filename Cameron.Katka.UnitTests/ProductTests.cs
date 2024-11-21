@@ -42,11 +42,10 @@ namespace Cameron.Katka.UnitTests
         }
 
 
-        // Not a requirement for the task, but just showing capability of repositories and adhering to Single Responsibility
         [Test]
         public void Check_All__Discounted_Products_Repository()
         {
-            List<Product> discountedProducts = _productRepository.FindAllDiscountedProducts();
+            List<SpecialProduct> discountedProducts = _productRepository.FindAllDiscountedProducts();
 
             Assert.IsNotNull(discountedProducts, "The discounted product list should not be null.");
         }

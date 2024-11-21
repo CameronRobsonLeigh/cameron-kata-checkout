@@ -31,5 +31,16 @@ namespace Cameron.Katka.ClassLibrary.Repositories
 
             return product;
         }
+
+        public List<SpecialProduct> FindAllDiscountedProducts()
+        {
+            // Retrieve all products
+            List<Product> products = _context.ProductsQueryable.ToList();
+
+            // Filter the list to only include SpecialProducts
+            List<SpecialProduct> discountedProducts = products.OfType<SpecialProduct>().ToList();
+
+            return discountedProducts;
+        }
     }
 }
