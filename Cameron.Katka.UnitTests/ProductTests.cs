@@ -30,5 +30,12 @@ namespace Cameron.Katka.UnitTests
             }
         }
 
+        [Test]
+        public void Check_All_Products_Repository()
+        {
+            var products = _repository.FindAllProducts();
+
+            Assert.IsNotNull(products, "The product list should not be null.");
+        } 
     }
 }
