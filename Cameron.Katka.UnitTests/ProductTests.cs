@@ -1,4 +1,4 @@
-using Cameron.Katka.ClassLibrary;
+using Cameron.Katka.ClassLibrary.Contexts;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
 using Cameron.Katka.ClassLibrary.Repositories;
@@ -8,7 +8,7 @@ namespace Cameron.Katka.UnitTests
     internal class ProductTests
     {
         private IProductRepository _productRepository;
-        private IApplicationDbContext _context;
+        private IProductDbContext _context;
 
         [SetUp]
         public void Setup()
