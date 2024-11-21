@@ -36,10 +36,19 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Check_All_Products_Repository()
         {
-            var products = _productRepository.FindAllProducts();
+            List<Product> products = _productRepository.FindAllProducts();
 
             Assert.IsNotNull(products, "The product list should not be null.");
         }
 
+
+        // Not a requirement for the task, but just showing capability of repositories and adhering to Single Responsibility
+        [Test]
+        public void Check_All__Discounted_Products_Repository()
+        {
+            List<Product> discountedProducts = _productRepository.FindAllDiscountedProducts();
+
+            Assert.IsNotNull(discountedProducts, "The discounted product list should not be null.");
+        }
     }
 }
