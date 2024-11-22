@@ -1,5 +1,6 @@
 ﻿using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
+using Cameron.Katka.ClassLibrary.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cameron.Katka.UnitTests
@@ -36,9 +37,8 @@ namespace Cameron.Katka.UnitTests
             _checkoutService.Scan("A");
             _checkoutService.Scan("B");
 
-            var retrieveBasket = _basketRepository.GetAllProductsFromBasket();
-            Assert.IsNotNull(retrieveBasket);
-
+            List<Product> retrieveBasket = _basketRepository.GetAllProductsFromBasket();
+            Assert.That(retrieveBasket.Count, Is.EqualTo(2));
         }
     }
 }
