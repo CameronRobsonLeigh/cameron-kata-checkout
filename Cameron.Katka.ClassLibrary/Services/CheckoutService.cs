@@ -7,11 +7,13 @@ namespace Cameron.Katka.ClassLibrary.Services
     {
         public IProductRepository _productRepository;
         public IBasketDbContext _basketContext;
+        public IBasketRepository _basketRepository;
 
-        public CheckoutService(IProductRepository productRepository, IBasketDbContext basketContext)
+        public CheckoutService(IProductRepository productRepository, IBasketDbContext basketContext, IBasketRepository basketRepository)
         {
             _productRepository = productRepository;
             _basketContext = basketContext;
+            _basketRepository = basketRepository;
         }
 
         public void Scan(string sku)
@@ -29,9 +31,12 @@ namespace Cameron.Katka.ClassLibrary.Services
 
         public int GetTotalPrice()
         {
+            List<Product> getProductsInBasket = _basketRepository.GetAllProductsFromBasket();
 
-         
-            return 0;
+            decimal totalPrice = getProductsInBasket.Sum(a => a.UnitPrice);
+            int totalPriceConverted = (int)totalPrice;
+
+            return totalPriceConverted;
         }
     }
 }

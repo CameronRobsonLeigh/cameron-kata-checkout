@@ -40,5 +40,16 @@ namespace Cameron.Katka.UnitTests
             List<Product> retrieveBasket = _basketRepository.GetAllProductsFromBasket();
             Assert.That(retrieveBasket.Count, Is.EqualTo(2));
         }
+
+        [Test]
+        public void Get_Total_Value()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+
+            int totalPrice = _checkoutService.GetTotalPrice();
+
+            Assert.IsInstanceOf<int>(totalPrice, "The total price should be an integer.");
+        }
     }
 }
