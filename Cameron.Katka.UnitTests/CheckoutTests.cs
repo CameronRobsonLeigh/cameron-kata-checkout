@@ -21,9 +21,10 @@ namespace Cameron.Katka.UnitTests
             var _serviceProvider = _serviceCollection.BuildServiceProvider();
             using (var scope = _serviceProvider.CreateScope())
             {
-                // Resolve dependencies from the scope
                 _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
                 _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
+                _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
+
             }
         }
 

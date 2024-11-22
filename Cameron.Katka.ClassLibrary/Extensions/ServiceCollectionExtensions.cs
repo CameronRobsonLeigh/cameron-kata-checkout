@@ -1,6 +1,7 @@
 ﻿using Cameron.Katka.ClassLibrary.Contexts;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Repositories;
+using Cameron.Katka.ClassLibrary.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cameron.Katka.ClassLibrary.Extensions
@@ -11,6 +12,7 @@ namespace Cameron.Katka.ClassLibrary.Extensions
         {
             services.AddScoped<IProductDbContext, ProductDbContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICheckoutService, CheckoutService>();
         }
     }
 }

@@ -1,13 +1,23 @@
-﻿using Cameron.Katka.ClassLibrary.Models;
+﻿using Cameron.Katka.ClassLibrary.Interfaces;
+using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
-    public class CheckoutService
+    public class CheckoutService : ICheckoutService
     {
+        public IProductRepository _productRepository;
         private List<Product> _basket = new List<Product>();
-        public int Scan(Product product)
+
+        public CheckoutService(IProductRepository productRepository)
         {
-            if (product == null)
+            _productRepository = productRepository;
+        }
+
+        public int Scan(string sku)
+        {
+            Product? product = _productRepository.FindProduct(sku);
+
+            if (sku == null)
                 throw new ArgumentNullException(nameof(product));
 
             if (product.UnitPrice < 0)
