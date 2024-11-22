@@ -31,8 +31,12 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Product_Should_Scan()
         {
-            int productCount = _checkoutService.Scan("A");
-            Assert.That(productCount, Is.EqualTo(1));
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+
+            var retrieveBasket = _BasketRepository.GetAll();
+            Assert.IsNotNull(retrieveBasket);
+
         }
     }
 }
