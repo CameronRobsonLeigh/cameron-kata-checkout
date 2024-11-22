@@ -13,7 +13,7 @@ namespace Cameron.Katka.ClassLibrary.Services
             _productRepository = productRepository;
         }
 
-        public int Scan(string sku)
+        public void Scan(string sku)
         {
             Product? product = _productRepository.FindProduct(sku);
 
@@ -28,8 +28,9 @@ namespace Cameron.Katka.ClassLibrary.Services
             return _basket.Count;
         }
 
-        public decimal GetTotalPrice()
+        public int GetTotalPrice()
         {
+
          
             return 0;
         }
