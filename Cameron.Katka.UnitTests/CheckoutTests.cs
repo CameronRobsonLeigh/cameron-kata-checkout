@@ -1,5 +1,4 @@
-﻿using Cameron.Katka.ClassLibrary.Contexts;
-using Cameron.Katka.ClassLibrary.Extensions;
+﻿using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +10,8 @@ namespace Cameron.Katka.UnitTests
         private IProductDbContext _context;
         private IServiceCollection _serviceCollection;
         private ICheckoutService _checkoutService;
+        private IBasketDbContext _basketDbContext;
+        private IBasketRepository _basketRepository;
 
         [SetUp]
         public void Setup()
@@ -24,7 +25,8 @@ namespace Cameron.Katka.UnitTests
                 _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
                 _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
                 _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
-
+                _basketDbContext = scope.ServiceProvider.GetRequiredService<IBasketDbContext>();
+                _basketRepository = scope.ServiceProvider.GetRequiredService<IBasketRepository>();
             }
         }
 
@@ -34,7 +36,7 @@ namespace Cameron.Katka.UnitTests
             _checkoutService.Scan("A");
             _checkoutService.Scan("B");
 
-            var retrieveBasket = _BasketRepository.GetAll();
+            var retrieveBasket = _basketRepository.GetAllProductsFromBasket();
             Assert.IsNotNull(retrieveBasket);
 
         }

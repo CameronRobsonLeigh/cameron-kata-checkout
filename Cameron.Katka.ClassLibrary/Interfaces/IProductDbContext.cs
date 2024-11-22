@@ -1,6 +1,6 @@
 ﻿using Cameron.Katka.ClassLibrary.Models;
 
-namespace Cameron.Katka.ClassLibrary.Contexts
+namespace Cameron.Katka.ClassLibrary.Interfaces
 {
     public interface IProductDbContext
     {

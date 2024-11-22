@@ -6,11 +6,12 @@ namespace Cameron.Katka.ClassLibrary.Services
     public class CheckoutService : ICheckoutService
     {
         public IProductRepository _productRepository;
-        private List<Product> _basket = new List<Product>();
+        public IBasketDbContext _basketContext;
 
-        public CheckoutService(IProductRepository productRepository)
+        public CheckoutService(IProductRepository productRepository, IBasketDbContext basketContext)
         {
             _productRepository = productRepository;
+            _basketContext = basketContext;
         }
 
         public void Scan(string sku)
@@ -23,9 +24,7 @@ namespace Cameron.Katka.ClassLibrary.Services
             if (product.UnitPrice < 0)
                 throw new ArgumentException("Product price cannot be negative", nameof(product.UnitPrice));
 
-            _basket.Add(product);
-
-            return _basket.Count;
+            _basketContext.Basket.Add(product);
         }
 
         public int GetTotalPrice()
