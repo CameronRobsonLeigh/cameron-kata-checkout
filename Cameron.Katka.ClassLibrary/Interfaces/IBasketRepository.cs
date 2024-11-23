@@ -7,6 +7,6 @@ namespace Cameron.Katka.ClassLibrary.Interfaces
     {
         List<Product> GetAllProductsFromBasket();
 
-        List<Product> GetAllStandardProducts();
+        List<Product> GetAllStandardProductsScanned();
     }
 }

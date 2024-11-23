@@ -29,18 +29,31 @@ namespace Cameron.Katka.UnitTests
             }
         }
 
-
         [Test]
         public void Calculate_Normal_Products()
         {
             _checkoutService.Scan("C");
             _checkoutService.Scan("D");
 
-            List<Product> products = _basketRepository.GetAllStandardProducts();
+            List<Product> products = _basketRepository.GetAllStandardProductsScanned();
 
             int totalPrice = _calculationService.CalculateStandardProducts(products);
 
             Assert.IsInstanceOf<int>(totalPrice, "The total price should be an integer.");
+        }
+
+        [Test]
+        public void Calculate_Special_Products()
+        {
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+
+            List<SpecialProduct> products = _basketRepository.GetAllDiscountedProductsScanned();
+
+            int totalPrice = _calculationService.CalculateDiscountedProducts(products);
+
+            Assert.IsInstanceOf<int>(totalPrice, "The total price should be an integer.");
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Cameron.Katka.ClassLibrary.Repositories
             return getProductsInbasket;
         }
 
-        public List<Product> GetAllStandardProducts()
+        public List<Product> GetAllStandardProductsScanned()
         {
             List<Product> getProductsInbasket = _context.BasketQueryable.Where(p => !(p is SpecialProduct)).ToList();
 
