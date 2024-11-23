@@ -15,6 +15,7 @@ namespace Cameron.Katka.ClassLibrary.Extensions
             services.AddScoped<ICheckoutService, CheckoutService>();
             services.AddScoped<IBasketDbContext, BasketDbContext>();
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<ICalculationService, CalculationService>();
         }
     }
 }

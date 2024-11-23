@@ -6,5 +6,7 @@ namespace Cameron.Katka.ClassLibrary.Interfaces
     public interface IBasketRepository
     {
         List<Product> GetAllProductsFromBasket();
+
+        List<Product> GetAllStandardProducts();
     }
 }
