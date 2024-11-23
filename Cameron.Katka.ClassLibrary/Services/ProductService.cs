@@ -86,6 +86,13 @@ namespace Cameron.Katka.ClassLibrary.Services
 
                 ReplaceDiscountProductWithNormal(findExistingProduct, newProduct);
             }
+            else
+            {
+                findExistingProduct.DiscountUnitPrice = rule.DiscountRate;
+                findExistingProduct.DiscountUnits = rule.DiscountUnits;
+                findExistingProduct.UnitPrice = rule.UnitPrice;
+
+            }
         }
 
         // If Discount product initially, but we want to remove the discount this replaces

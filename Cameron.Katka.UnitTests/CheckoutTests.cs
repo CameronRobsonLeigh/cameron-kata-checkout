@@ -65,7 +65,6 @@ namespace Cameron.Katka.UnitTests
             rules.Add(newRule3);
 
             _productService.UpdatePricingRules(rules);
-            List<Product> retrieveBasket = _productRepository.FindAllProducts();
 
             _checkoutService.Scan("A");
             _checkoutService.Scan("E");
@@ -75,5 +74,26 @@ namespace Cameron.Katka.UnitTests
             int totalPrice = _checkoutService.GetTotalPrice();
             Assert.That(totalPrice, Is.EqualTo(160));
         }
+
+        [Test]
+        public void Check_Remainder_Of_Discounted_Products()
+        {
+            List<PricingRule> rules = new List<PricingRule>();
+            PricingRule newRule = new PricingRule("A", 70, 3, 130);
+            rules.Add(newRule);
+
+            _productService.UpdatePricingRules(rules);
+
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+
+            List<Product> retrieveBasket = _productRepository.FindAllProducts();
+
+            int totalPrice = _checkoutService.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(200));
+        }
+
     }
 }
