@@ -7,14 +7,14 @@ namespace Cameron.Katka.ClassLibrary.Services
     {
         public int CalculateStandardProducts(List<Product> products)
         {
-            int calculatePriceOfFilteredProducts = (int)products.Sum(p => p.UnitPrice);
+            int calculatePriceOfFilteredProducts = products.Sum(p => p.UnitPrice);
 
             return calculatePriceOfFilteredProducts;
         }
 
         public int CalculateDiscountedProducts(List<SpecialProduct> products)
         {
-            decimal total = 0;
+            int total = 0;
 
             // Group products by SKU (to apply bulk discounts per product type)
             var groupedProducts = products.GroupBy(p => p.SKU);
@@ -41,7 +41,7 @@ namespace Cameron.Katka.ClassLibrary.Services
 
             }
 
-            return (int)total;
+            return total;
         }
     }
 }
