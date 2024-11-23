@@ -8,7 +8,6 @@ namespace Cameron.Katka.UnitTests
     internal class ProductTests
     {
         private IProductRepository _productRepository;
-        private IProductDbContext _context;
         private IServiceCollection _serviceCollection;
 
         [SetUp]
@@ -17,15 +16,12 @@ namespace Cameron.Katka.UnitTests
             _serviceCollection = new ServiceCollection();
             _serviceCollection.AddInjection();
 
-            var _serviceProvider = _serviceCollection.BuildServiceProvider();
-            using (var scope = _serviceProvider.CreateScope())
+            ServiceProvider _serviceProvider = _serviceCollection.BuildServiceProvider();
+            using (IServiceScope scope = _serviceProvider.CreateScope())
             {
-                // Resolve dependencies from the scope
                 _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-                _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
             }
         }
-
 
         // Basic product test, kept this in a seperate set of tests in case we ever need to ammend the original structure
         [Test]
