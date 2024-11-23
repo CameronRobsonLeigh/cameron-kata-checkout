@@ -11,10 +11,10 @@ namespace Cameron.Katka.ClassLibrary.Contexts
         {
             _products = new List<Product>
             {
-                new SpecialProduct("A", 50m, 3, 130m),
-                new SpecialProduct("B", 30m, 2, 45m),
-                new Product("C", 20m),
-                new Product("D", 15m)
+                new SpecialProduct("A", 50, 3, 130),
+                new SpecialProduct("B", 30, 2, 45),
+                new Product("C", 20),
+                new Product("D", 15)
             };
         }
 

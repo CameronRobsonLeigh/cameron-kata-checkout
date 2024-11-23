@@ -1,6 +1,5 @@
 ﻿using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
-using System.Data;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
@@ -56,7 +55,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         // if new product but there is a rate
         public void AddDiscountProduct(PricingRule rule)
         {
-            SpecialProduct prod = new SpecialProduct(rule.Sku, rule.UnitPrice, (int)rule.DiscountUnits, (decimal)rule.DiscountRate);
+            SpecialProduct prod = new SpecialProduct(rule.Sku, rule.UnitPrice, rule.DiscountUnits, rule.DiscountRate);
 
             _productContext.ProductList.Add(prod);
         }
@@ -66,7 +65,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         {
             if (rule.DiscountRate != null)
             {
-                var newProduct = new SpecialProduct(existingProduct.SKU, rule.UnitPrice, (int)rule.DiscountUnits, (decimal)rule.DiscountRate);
+                var newProduct = new SpecialProduct(existingProduct.SKU, rule.UnitPrice, rule.DiscountUnits, rule.DiscountRate);
 
                 ReplaceNormalProductWithDiscountProduct(existingProduct, newProduct);
             }

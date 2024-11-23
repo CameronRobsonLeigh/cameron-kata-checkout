@@ -113,6 +113,5 @@ namespace Cameron.Katka.UnitTests
             int totalPrice = _checkoutService.GetTotalPrice();
             Assert.That(totalPrice, Is.EqualTo(95));
         }
-
     }
 }

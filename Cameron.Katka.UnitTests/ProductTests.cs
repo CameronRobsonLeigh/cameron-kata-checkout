@@ -34,11 +34,11 @@ namespace Cameron.Katka.UnitTests
             Product product = _productRepository.FindProduct("A");       
 
             Assert.IsInstanceOf<string>(product.SKU);
-            Assert.IsInstanceOf<decimal>(product.UnitPrice);
+            Assert.IsInstanceOf<int>(product.UnitPrice);
             if (product is SpecialProduct specialProduct)
             {
                 Assert.IsInstanceOf<int>(specialProduct.DiscountUnits);
-                Assert.IsInstanceOf<decimal>(specialProduct.DiscountUnitPrice);
+                Assert.IsInstanceOf<int>(specialProduct.DiscountUnitPrice);
             }
         }
 
