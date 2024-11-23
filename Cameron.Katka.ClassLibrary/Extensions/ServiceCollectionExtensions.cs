@@ -10,10 +10,10 @@ namespace Cameron.Katka.ClassLibrary.Extensions
     {
         public static void AddInjection(this IServiceCollection services)
         {
-            services.AddScoped<IProductDbContext, ProductDbContext>();
+            services.AddScoped<IProductDbContext, ProductContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICheckoutService, CheckoutService>();
-            services.AddScoped<IBasketDbContext, BasketDbContext>();
+            services.AddScoped<IBasketDbContext, BasketContext>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<ICalculationService, CalculationService>();
             services.AddScoped<IProductService, ProductService>();

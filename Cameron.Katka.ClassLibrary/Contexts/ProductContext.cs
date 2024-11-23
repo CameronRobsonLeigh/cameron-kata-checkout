@@ -3,11 +3,11 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Contexts
 {
-    public class ProductDbContext : IProductDbContext
+    public class ProductContext : IProductDbContext
     {
         private List<Product> _products;
 
-        public ProductDbContext()
+        public ProductContext()
         {
             _products = new List<Product>
             {

@@ -4,11 +4,11 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Contexts
 {
-    public class BasketDbContext : IBasketDbContext
+    public class BasketContext : IBasketDbContext
     {
         private List<Product> _basket;
 
-        public BasketDbContext()
+        public BasketContext()
         {
             _basket = new List<Product>();
         }
