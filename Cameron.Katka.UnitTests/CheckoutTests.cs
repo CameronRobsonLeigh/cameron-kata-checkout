@@ -54,5 +54,18 @@ namespace Cameron.Katka.UnitTests
             Assert.IsInstanceOf<int>(totalPrice, "The total price should be an integer.");
         }
 
+        [Test]
+        public void Set_Pricing_Rules()
+        {
+            PricingRule newRule = new PricingRule("A", 80, 3, 10);
+
+            _productService.UpdatePricingRules(newRule);
+
+
+           
+
+        }
+
+
     }
 }
