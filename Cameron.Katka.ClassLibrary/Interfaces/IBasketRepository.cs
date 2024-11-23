@@ -8,5 +8,7 @@ namespace Cameron.Katka.ClassLibrary.Interfaces
         List<Product> GetAllProductsFromBasket();
 
         List<Product> GetAllStandardProductsScanned();
+
+        List<SpecialProduct> GetAllDiscountedProductsScanned();
     }
 }

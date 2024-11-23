@@ -10,5 +10,7 @@ namespace Cameron.Katka.ClassLibrary.Interfaces
     public interface ICalculationService
     {
         int CalculateStandardProducts(List<Product> products);
+
+        int CalculateDiscountedProducts(List<SpecialProduct> products);
     }
 }

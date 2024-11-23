@@ -11,5 +11,12 @@ namespace Cameron.Katka.ClassLibrary.Services
 
             return calculatePriceOfFilteredProducts;
         }
+
+        public int CalculateDiscountedProducts(List<SpecialProduct> products)
+        {
+            int calculatePriceOfFilteredProducts = (int)products.Sum(p => p.UnitPrice);
+
+            return calculatePriceOfFilteredProducts;
+        }
     }
 }

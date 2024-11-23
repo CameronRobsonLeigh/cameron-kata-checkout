@@ -26,5 +26,11 @@ namespace Cameron.Katka.ClassLibrary.Repositories
             return getProductsInbasket;
         }
 
+        public List<SpecialProduct> GetAllDiscountedProductsScanned()
+        {
+            List<SpecialProduct> getProductsInbasket = _context.BasketQueryable.OfType<SpecialProduct>().ToList();
+
+            return getProductsInbasket;
+        }
     }
 }
