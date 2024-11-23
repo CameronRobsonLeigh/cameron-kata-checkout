@@ -2,19 +2,15 @@
 using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
-using Cameron.Katka.ClassLibrary.Repositories;
-using Cameron.Katka.ClassLibrary.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cameron.Katka.UnitTests
 {
     internal class CalculationTests
     {
-        private IProductRepository _productRepository;
-        private IProductDbContext _context;
+
         private IServiceCollection _serviceCollection;
         private ICheckoutService _checkoutService;
-        private IBasketDbContext _basketDbContext;
         private IBasketRepository _basketRepository;
         private ICalculationService _calculationService;
 
@@ -27,10 +23,7 @@ namespace Cameron.Katka.UnitTests
             var _serviceProvider = _serviceCollection.BuildServiceProvider();
             using (var scope = _serviceProvider.CreateScope())
             {
-                _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-                _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
                 _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
-                _basketDbContext = scope.ServiceProvider.GetRequiredService<IBasketDbContext>();
                 _basketRepository = scope.ServiceProvider.GetRequiredService<IBasketRepository>();
                 _calculationService = scope.ServiceProvider.GetRequiredService<ICalculationService>();
             }
