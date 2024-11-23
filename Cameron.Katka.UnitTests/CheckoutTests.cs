@@ -46,10 +46,13 @@ namespace Cameron.Katka.UnitTests
         {
             _checkoutService.Scan("A");
             _checkoutService.Scan("B");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
 
             int totalPrice = _checkoutService.GetTotalPrice();
 
             Assert.IsInstanceOf<int>(totalPrice, "The total price should be an integer.");
         }
+
     }
 }
