@@ -113,5 +113,37 @@ namespace Cameron.Katka.UnitTests
             int totalPrice = _checkoutService.GetTotalPrice();
             Assert.That(totalPrice, Is.EqualTo(95));
         }
+
+        [Test]
+        public void Scan_Should_Calculate_Correct_Price_Any_Bulk_Order()
+        {
+            List<PricingRule> rules = new List<PricingRule>();
+            PricingRule newRule = new PricingRule("A", 70, 3, 130);
+            PricingRule newRule2 = new PricingRule("Z", 70, 2, 40);
+            PricingRule newRule3 = new PricingRule("C", 70, 1, 130);
+            PricingRule newRule4 = new PricingRule("X", 70, 1, 800);
+            rules.Add(newRule);
+            rules.Add(newRule2);
+            rules.Add(newRule3);
+            rules.Add(newRule4);
+
+            _productService.UpdatePricingRules(rules);
+
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("Z");
+            _checkoutService.Scan("X");
+            _checkoutService.Scan("C");
+            _checkoutService.Scan("C");
+            _checkoutService.Scan("B");
+
+            int totalPrice = _checkoutService.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(1375));
+        }
+
+
     }
 }

@@ -23,7 +23,7 @@ namespace Cameron.Katka.ClassLibrary.Services
             {
                 // get first option in group so we can interact with the data (should be consistent across the SKU group)
                 // retrieve highest discount price if they discount prices are different per group
-                SpecialProduct? product = group.OrderByDescending(p => p.SKU).FirstOrDefault();
+                SpecialProduct? product = group.FirstOrDefault();
 
                 // don't think this is needed as we check for null in the scan phase but keeps warnings happy
                 if (product == null)
