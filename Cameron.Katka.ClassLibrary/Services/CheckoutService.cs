@@ -25,6 +25,11 @@ namespace Cameron.Katka.ClassLibrary.Services
             if (sku == null)
                 throw new ArgumentNullException(nameof(product));
 
+            if (product == null)
+            {
+                throw new ArgumentNullException($"The scanned SKU '{sku}' does not exist.");
+            }
+
             if (product.UnitPrice < 0)
                 throw new ArgumentException("Product price cannot be negative", nameof(product.UnitPrice));
 

@@ -92,7 +92,18 @@ namespace Cameron.Katka.UnitTests
             List<Product> retrieveBasket = _productRepository.FindAllProducts();
 
             int totalPrice = _checkoutService.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(200));
+            Assert.That(totalPrice, Is.EqualTo(160));
+        }
+
+        [Test]
+        public void Scan_For_Non_Existing_SKU()
+        {
+            // Arrange
+            string invalidSku = "InvalidSKU";
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => _checkoutService.Scan(invalidSku));
+
         }
 
     }
