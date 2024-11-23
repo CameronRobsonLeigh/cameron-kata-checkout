@@ -46,6 +46,8 @@ namespace Cameron.Katka.UnitTests
         public void Calculate_Special_Products()
         {
             _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("A");
             _checkoutService.Scan("B");
 
             List<SpecialProduct> products = _basketRepository.GetAllDiscountedProductsScanned();

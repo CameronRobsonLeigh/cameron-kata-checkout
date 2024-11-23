@@ -3,8 +3,8 @@ namespace Cameron.Katka.ClassLibrary.Models
 {
     public class SpecialProduct: Product
     {
-        public int DiscountUnits { get; set; }
-        public decimal DiscountUnitPrice { get; set; }
+        public int? DiscountUnits { get; set; }
+        public decimal? DiscountUnitPrice { get; set; }
 
         public SpecialProduct(string sku, decimal unitPrice, int discountUnits, decimal discountPrice) : base(sku, unitPrice)
         {
