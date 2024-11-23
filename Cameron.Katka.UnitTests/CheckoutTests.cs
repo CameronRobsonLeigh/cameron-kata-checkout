@@ -30,7 +30,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Product_Should_Scan()
+        public void Scan_Should_Add_Products_To_Basket()
         {
             _checkoutService.Scan("A");
             _checkoutService.Scan("B");
@@ -40,7 +40,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Get_Total_Value()
+        public void GetTotalPrice_Should_Return_Integer_Value()
         {
             _checkoutService.Scan("A");
             _checkoutService.Scan("B");
@@ -53,7 +53,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Set_Pricing_Rules()
+        public void UpdatePricingRules_Should_Apply_Correct_Discounts()
         {
             List<PricingRule> rules = new List<PricingRule>();
             PricingRule newRule = new PricingRule("A", 20);
@@ -76,7 +76,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Check_Remainder_Of_Discounted_Products()
+        public void CalculateTotal_Should_Handle_Discounted_And_Remaining_Products()
         {
             List<PricingRule> rules = new List<PricingRule>();
             PricingRule newRule = new PricingRule("A", 70, 3, 130);
@@ -96,7 +96,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Scan_For_Non_Existing_SKU()
+        public void Scan_Should_Throw_Exception_For_NonExistent_SKU()
         {
             // Arrange
             string invalidSku = "InvalidSKU";
