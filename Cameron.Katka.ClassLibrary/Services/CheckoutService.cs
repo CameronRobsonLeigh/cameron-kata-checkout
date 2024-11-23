@@ -33,11 +33,20 @@ namespace Cameron.Katka.ClassLibrary.Services
 
         public int GetTotalPrice()
         {
+            int totalProductsPrice = 0;
+            int totalDiscountedProductsPrice = 0;
+
             List<Product> products = _basketRepository.GetAllStandardProductsScanned();
-            int totalProductsPrice = _calculationService.CalculateStandardProducts(products);
+            if (products.Count > 0)
+            {               
+                totalProductsPrice = _calculationService.CalculateStandardProducts(products);
+            }
 
             List<SpecialProduct> discountedProducts = _basketRepository.GetAllDiscountedProductsScanned();
-            int totalDiscountedProductsPrice = _calculationService.CalculateDiscountedProducts(discountedProducts);
+            if (discountedProducts.Count > 0)
+            {
+                totalDiscountedProductsPrice = _calculationService.CalculateStandardProducts(products);
+            }
 
             return totalProductsPrice + totalDiscountedProductsPrice;
         }
