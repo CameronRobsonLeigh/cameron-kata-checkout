@@ -102,5 +102,17 @@ namespace Cameron.Katka.UnitTests
 
             Assert.Throws<ArgumentNullException>(() => _checkoutService.Scan(invalidSku));
         }
+
+        [Test]
+        public void Scan_Should_Calculate_Correct_Price_Any_Order()
+        {
+            _checkoutService.Scan("B");
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("B");
+
+            int totalPrice = _checkoutService.GetTotalPrice();
+            Assert.That(totalPrice, Is.EqualTo(95));
+        }
+
     }
 }

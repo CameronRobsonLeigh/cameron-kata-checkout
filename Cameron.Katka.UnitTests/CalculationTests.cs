@@ -30,7 +30,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Calculate_Normal_Products()
+        public void CalculateStandardProducts_Should_Return_CorrectTotal()
         {
             _checkoutService.Scan("C");
             _checkoutService.Scan("D");
@@ -43,7 +43,7 @@ namespace Cameron.Katka.UnitTests
         }
 
         [Test]
-        public void Calculate_Special_Products()
+        public void CalculateDiscountedProducts_Should_Return_CorrectTotal()
         {
             _checkoutService.Scan("A");
             _checkoutService.Scan("A");
