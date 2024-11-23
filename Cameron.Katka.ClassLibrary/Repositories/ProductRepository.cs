@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Repositories
 {
-    public class ProductRepository : IProductRepository
+    internal class ProductRepository : IProductRepository
     {
         private readonly IProductDbContext _context;
 

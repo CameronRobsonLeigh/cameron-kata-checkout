@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
-    public class ProductService : IProductService
+    internal class ProductService : IProductService
     {
         IProductDbContext _productContext;
 

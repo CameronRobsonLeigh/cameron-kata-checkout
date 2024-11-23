@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Repositories
 {
-    public class BasketRepository : IBasketRepository
+    internal class BasketRepository : IBasketRepository
     {
         private readonly IBasketDbContext _context;
 

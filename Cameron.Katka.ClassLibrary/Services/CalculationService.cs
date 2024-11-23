@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
-    public class CalculationService : ICalculationService
+    internal class CalculationService : ICalculationService
     {
         public int CalculateStandardProducts(List<Product> products)
         {

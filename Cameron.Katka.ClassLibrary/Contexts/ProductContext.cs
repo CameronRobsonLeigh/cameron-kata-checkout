@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Contexts
 {
-    public class ProductContext : IProductDbContext
+    internal class ProductContext : IProductDbContext
     {
         private List<Product> _products;
 

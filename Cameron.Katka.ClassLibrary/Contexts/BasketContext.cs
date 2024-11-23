@@ -4,7 +4,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Contexts
 {
-    public class BasketContext : IBasketDbContext
+    internal class BasketContext : IBasketDbContext
     {
         private List<Product> _basket;
 

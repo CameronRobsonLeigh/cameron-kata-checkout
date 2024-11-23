@@ -3,7 +3,7 @@ using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
-    public class CheckoutService : ICheckoutService
+    internal class CheckoutService : ICheckoutService
     {
         public IProductRepository _productRepository;
         public IBasketDbContext _basketContext;
