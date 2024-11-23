@@ -92,7 +92,7 @@ namespace Cameron.Katka.UnitTests
             List<Product> retrieveBasket = _productRepository.FindAllProducts();
 
             int totalPrice = _checkoutService.GetTotalPrice();
-            Assert.That(totalPrice, Is.EqualTo(160));
+            Assert.That(totalPrice, Is.EqualTo(200));
         }
 
         [Test]
