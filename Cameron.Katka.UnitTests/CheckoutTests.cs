@@ -98,13 +98,9 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Scan_Should_Throw_Exception_For_NonExistent_SKU()
         {
-            // Arrange
             string invalidSku = "InvalidSKU";
 
-            // Act & Assert
             Assert.Throws<ArgumentNullException>(() => _checkoutService.Scan(invalidSku));
-
         }
-
     }
 }
