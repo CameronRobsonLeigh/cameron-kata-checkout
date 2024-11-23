@@ -1,5 +1,6 @@
 ﻿using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
+using System.Data;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
@@ -9,31 +10,98 @@ namespace Cameron.Katka.ClassLibrary.Services
 
         public ProductService(IProductDbContext productContext)
         {
-            _productContext = productContext;           
+            _productContext = productContext;
         }
 
         public void UpdatePricingRules(List<PricingRule> pricingRules)
         {
             foreach (var rule in pricingRules)
             {
-                var findExistingRule =_productContext.ProductList.Find(a => a.SKU == rule.Sku);
+                var findExistingProduct = _productContext.ProductList.Find(a => a.SKU == rule.Sku);
 
-                if (findExistingRule != null)
+                if (findExistingProduct != null)
                 {
-                    findExistingRule.UnitPrice = rule.UnitPrice;
+                    if (findExistingProduct is SpecialProduct)
+                    {
+                        UpdateDiscountProduct(rule, (SpecialProduct)findExistingProduct);
+                    }
+                    else
+                    {
+                        UpdateStandardProduct(rule, findExistingProduct);
+                    }
                 }
                 else
                 {
-                    AddStandardProduct(rule);
+                    if (rule.DiscountRate == null || rule.DiscountUnits == null)
+                    {
+                        AddStandardProduct(rule);
+                    }
+                    else
+                    {
+                        AddDiscountProduct(rule);
+                    }
+
                 }
             }
         }
 
+        // If new product but no rate
         public void AddStandardProduct(PricingRule rule)
         {
-            var prod = new Product(rule.Sku, rule.UnitPrice);
+            Product prod = new Product(rule.Sku, rule.UnitPrice);
 
             _productContext.ProductList.Add(prod);
+        }
+
+        // if new product but there is a rate
+        public void AddDiscountProduct(PricingRule rule)
+        {
+            SpecialProduct prod = new SpecialProduct(rule.Sku, rule.UnitPrice, (int)rule.DiscountUnits, (decimal)rule.DiscountRate);
+
+            _productContext.ProductList.Add(prod);
+        }
+
+        // if existing product that is standard (non-discount)
+        public void UpdateStandardProduct(PricingRule rule, Product existingProduct)
+        {
+            if (rule.DiscountRate != null)
+            {
+                var newProduct = new SpecialProduct(existingProduct.SKU, rule.UnitPrice, (int)rule.DiscountUnits, (decimal)rule.DiscountRate);
+
+                ReplaceNormalProductWithDiscountProduct(existingProduct, newProduct);
+            }
+            else
+            {
+                existingProduct.UnitPrice = rule.UnitPrice;
+            }
+        }
+
+        // If existing product that is Discount product
+        public void UpdateDiscountProduct(PricingRule rule, SpecialProduct findExistingProduct)
+        {
+            if (rule.DiscountRate == null || rule.DiscountUnits == null)
+            {
+                // cannot change type of product in memory so have to re-add
+                var newProduct = new Product(findExistingProduct.SKU, rule.UnitPrice);
+
+                ReplaceDiscountProductWithNormal(findExistingProduct, newProduct);
+            }
+        }
+
+        // If Discount product initially, but we want to remove the discount this replaces
+        private void ReplaceDiscountProductWithNormal(SpecialProduct findExistingProduct, Product newProduct)
+        {
+            _productContext.ProductList.Remove(findExistingProduct);
+
+            _productContext.ProductList.Add(newProduct);
+        }
+
+        // If Standard Product initially, but we want to update to have a discount
+        private void ReplaceNormalProductWithDiscountProduct(Product findExistingProduct, SpecialProduct newProduct)
+        {
+            _productContext.ProductList.Remove(findExistingProduct);
+
+            _productContext.ProductList.Add(newProduct);
         }
     }
 }

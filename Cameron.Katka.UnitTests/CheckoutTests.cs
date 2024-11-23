@@ -62,16 +62,26 @@ namespace Cameron.Katka.UnitTests
         public void Set_Pricing_Rules()
         {
             List<PricingRule> rules = new List<PricingRule>();
-            PricingRule newRule = new PricingRule("A", 80);
-            PricingRule newRule2 = new PricingRule("B", 80);
+            PricingRule newRule = new PricingRule("A", 20);
+            PricingRule newRule2 = new PricingRule("A", 30);
+            PricingRule newRule3 = new PricingRule("E", 80, 3, 130);
 
             rules.Add(newRule);
             rules.Add(newRule2);
+            rules.Add(newRule3);
 
             _productService.UpdatePricingRules(rules);
             List<Product> retrieveBasket = _productRepository.FindAllProducts();
 
+            _checkoutService.Scan("A");
+            _checkoutService.Scan("E");
+            _checkoutService.Scan("E");
+            _checkoutService.Scan("E");
 
+            int totalPrice = _checkoutService.GetTotalPrice();
+            //Assert.That(totalPrice, Is.EqualTo(150));
         }
+
+
     }
 }

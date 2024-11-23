@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Cameron.Katka.ClassLibrary.Models
 {
     public class PricingRule
@@ -16,10 +11,18 @@ namespace Cameron.Katka.ClassLibrary.Models
 
         public int? DiscountRate { get; set; }
 
-        public PricingRule(string sku, int unitPrice)
+        public PricingRule(string sku, int unitPrice, int? discountUnits, int? discountRate)
         {
             Sku = sku;
             UnitPrice = unitPrice;
+            DiscountUnits = discountUnits;
+            DiscountRate = discountRate;
+        }
+
+        // overloaded constructor for no discount in rule
+        public PricingRule(string sku, int unitPrice)
+            : this(sku, unitPrice, null, null)
+        {
         }
     }
 }

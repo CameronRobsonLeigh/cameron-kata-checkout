@@ -45,7 +45,7 @@ namespace Cameron.Katka.ClassLibrary.Services
             List<SpecialProduct> discountedProducts = _basketRepository.GetAllDiscountedProductsScanned();
             if (discountedProducts.Count > 0)
             {
-                totalDiscountedProductsPrice = _calculationService.CalculateStandardProducts(products);
+                totalDiscountedProductsPrice = _calculationService.CalculateDiscountedProducts(discountedProducts);
             }
 
             return totalProductsPrice + totalDiscountedProductsPrice;
