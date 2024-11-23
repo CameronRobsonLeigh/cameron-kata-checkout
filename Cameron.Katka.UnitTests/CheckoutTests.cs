@@ -1,7 +1,9 @@
 ﻿using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
+using Cameron.Katka.ClassLibrary.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Cameron.Katka.UnitTests
 {
@@ -13,6 +15,7 @@ namespace Cameron.Katka.UnitTests
         private ICheckoutService _checkoutService;
         private IBasketDbContext _basketDbContext;
         private IBasketRepository _basketRepository;
+        private IProductService _productService;
 
         [SetUp]
         public void Setup()
@@ -28,6 +31,7 @@ namespace Cameron.Katka.UnitTests
                 _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
                 _basketDbContext = scope.ServiceProvider.GetRequiredService<IBasketDbContext>();
                 _basketRepository = scope.ServiceProvider.GetRequiredService<IBasketRepository>();
+                _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
             }
         }
 
@@ -57,15 +61,17 @@ namespace Cameron.Katka.UnitTests
         [Test]
         public void Set_Pricing_Rules()
         {
-            PricingRule newRule = new PricingRule("A", 80, 3, 10);
+            List<PricingRule> rules = new List<PricingRule>();
+            PricingRule newRule = new PricingRule("A", 80);
+            PricingRule newRule2 = new PricingRule("B", 80);
 
-            _productService.UpdatePricingRules(newRule);
+            rules.Add(newRule);
+            rules.Add(newRule2);
 
+            _productService.UpdatePricingRules(rules);
+            List<Product> retrieveBasket = _productRepository.FindAllProducts();
 
-           
 
         }
-
-
     }
 }
