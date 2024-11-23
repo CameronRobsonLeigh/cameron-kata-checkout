@@ -45,7 +45,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         }
 
         // If new product but no rate
-        public void AddStandardProduct(PricingRule rule)
+        private void AddStandardProduct(PricingRule rule)
         {
             Product prod = new Product(rule.Sku, rule.UnitPrice);
 
@@ -53,7 +53,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         }
 
         // if new product but there is a rate
-        public void AddDiscountProduct(PricingRule rule)
+        private void AddDiscountProduct(PricingRule rule)
         {
             SpecialProduct prod = new SpecialProduct(rule.Sku, rule.UnitPrice, rule.DiscountUnits, rule.DiscountRate);
 
@@ -61,7 +61,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         }
 
         // if existing product that is standard (non-discount)
-        public void UpdateStandardProduct(PricingRule rule, Product existingProduct)
+        private void UpdateStandardProduct(PricingRule rule, Product existingProduct)
         {
             if (rule.DiscountRate != null)
             {
@@ -76,7 +76,7 @@ namespace Cameron.Katka.ClassLibrary.Services
         }
 
         // If existing product that is Discount product
-        public void UpdateDiscountProduct(PricingRule rule, SpecialProduct findExistingProduct)
+        private void UpdateDiscountProduct(PricingRule rule, SpecialProduct findExistingProduct)
         {
             if (rule.DiscountRate == null || rule.DiscountUnits == null)
             {
