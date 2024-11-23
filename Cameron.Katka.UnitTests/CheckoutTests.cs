@@ -1,19 +1,15 @@
 ﻿using Cameron.Katka.ClassLibrary.Extensions;
 using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
-using Cameron.Katka.ClassLibrary.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Cameron.Katka.UnitTests
 {
     internal class CheckoutTests
     {
         private IProductRepository _productRepository;
-        private IProductDbContext _context;
         private IServiceCollection _serviceCollection;
         private ICheckoutService _checkoutService;
-        private IBasketDbContext _basketDbContext;
         private IBasketRepository _basketRepository;
         private IProductService _productService;
 
@@ -27,9 +23,7 @@ namespace Cameron.Katka.UnitTests
             using (var scope = _serviceProvider.CreateScope())
             {
                 _productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
-                _context = scope.ServiceProvider.GetRequiredService<IProductDbContext>();
                 _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
-                _basketDbContext = scope.ServiceProvider.GetRequiredService<IBasketDbContext>();
                 _basketRepository = scope.ServiceProvider.GetRequiredService<IBasketRepository>();
                 _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
             }
@@ -79,7 +73,7 @@ namespace Cameron.Katka.UnitTests
             _checkoutService.Scan("E");
 
             int totalPrice = _checkoutService.GetTotalPrice();
-            //Assert.That(totalPrice, Is.EqualTo(150));
+            Assert.That(totalPrice, Is.EqualTo(160));
         }
 
 
