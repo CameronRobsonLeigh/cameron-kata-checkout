@@ -17,7 +17,6 @@ namespace Cameron.Katka.ClassLibrary.Services
         {
             foreach (var rule in pricingRules)
             {
-
                 var findExistingProduct = _productContext.ProductList.Find(a => a.SKU == rule.Sku);
 
                 if (findExistingProduct != null)

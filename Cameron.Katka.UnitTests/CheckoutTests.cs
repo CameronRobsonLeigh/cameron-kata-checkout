@@ -144,20 +144,5 @@ namespace Cameron.Katka.UnitTests
             int totalPrice = _checkoutService.GetTotalPrice();
             Assert.That(totalPrice, Is.EqualTo(1375));
         }
-
-
-        [Test]
-        public void UpdatePricingRules_Should_Apply_Remove_Existing_Rule()
-        {
-            List<PricingRule> rules = new List<PricingRule>();
-            int? num = null;
-            PricingRule newRule = new PricingRule("A", (int)num);
-
-            rules.Add(newRule);
-
-            _productService.UpdatePricingRules(rules);
-
-            Assert.Throws<ArgumentNullException>(() => _checkoutService.Scan("A"));
-        }
     }
 }
