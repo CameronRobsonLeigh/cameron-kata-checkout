@@ -1,15 +1,14 @@
-﻿
-namespace Cameron.Katka.ClassLibrary.Models
+﻿namespace Cameron.Katka.ClassLibrary.Dto
 {
     public class PricingRule
     {
-        public string Sku { get; set; }
+        public string Sku { get; }
 
-        public int UnitPrice { get; set; }
+        public int UnitPrice { get; }
 
-        public int? DiscountUnits { get; set; }
+        public int? DiscountUnits { get; }
 
-        public int? DiscountRate { get; set; }
+        public int? DiscountRate { get; }
 
         public PricingRule(string sku, int unitPrice, int? discountUnits, int? discountRate)
         {

@@ -1,5 +1,5 @@
 ﻿
-using Cameron.Katka.ClassLibrary.Models;
+using Cameron.Katka.ClassLibrary.Dto;
 
 namespace Cameron.Katka.ClassLibrary.Interfaces
 {
