@@ -1,4 +1,4 @@
-﻿namespace Cameron.Katka.ClassLibrary.Dto
+﻿namespace Cameron.Katka.ClassLibrary.Models
 {
     public class PricingRule
     {

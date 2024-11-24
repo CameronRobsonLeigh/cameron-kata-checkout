@@ -1,5 +1,4 @@
-﻿using Cameron.Katka.ClassLibrary.Dto;
-using Cameron.Katka.ClassLibrary.Interfaces;
+﻿using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
 
 namespace Cameron.Katka.ClassLibrary.Services
