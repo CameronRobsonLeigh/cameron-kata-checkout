@@ -12,6 +12,7 @@ namespace Cameron.Katka.UnitTests
         private ICheckoutService _checkoutService;
         private IBasketRepository _basketRepository;
         private IProductService _productService;
+        private IProductAdderService _productAdderService;
 
         [SetUp]
         public void Setup()
@@ -26,6 +27,7 @@ namespace Cameron.Katka.UnitTests
                 _checkoutService = scope.ServiceProvider.GetRequiredService<ICheckoutService>();
                 _basketRepository = scope.ServiceProvider.GetRequiredService<IBasketRepository>();
                 _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
+                _productAdderService = scope.ServiceProvider.GetRequiredService<IProductAdderService>();
             }
         }
 
