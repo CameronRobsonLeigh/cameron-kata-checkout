@@ -7,14 +7,12 @@ namespace Cameron.Katka.ClassLibrary.Services
     {
         private readonly IProductDbContext _productContext;
         private readonly IProductAdderService _productAdderService;
-        private readonly IProductTypeUpdaterService _productTypeUpdaterService;
         private readonly IProductUpdaterService _productUpdaterService;
 
-        public ProductService(IProductDbContext productContext, IProductAdderService productAdderService, IProductTypeUpdaterService productTypeUpdaterService, IProductUpdaterService productUpdaterService)
+        public ProductService(IProductDbContext productContext, IProductAdderService productAdderService, IProductUpdaterService productUpdaterService)
         {
             _productContext = productContext;
             _productAdderService = productAdderService;
-            _productTypeUpdaterService = productTypeUpdaterService;
             _productUpdaterService = productUpdaterService;
         }
 
