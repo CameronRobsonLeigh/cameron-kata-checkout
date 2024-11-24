@@ -5,10 +5,10 @@ namespace Cameron.Katka.ClassLibrary.Services
 {
     internal class CheckoutService : ICheckoutService
     {
-        public IProductRepository _productRepository;
-        public IBasketDbContext _basketContext;
-        public IBasketRepository _basketRepository;
-        public ICalculationService _calculationService;
+        private readonly IProductRepository _productRepository;
+        private readonly IBasketDbContext _basketContext;
+        private readonly IBasketRepository _basketRepository;
+        private readonly ICalculationService _calculationService;
 
         public CheckoutService(IProductRepository productRepository, IBasketDbContext basketContext, IBasketRepository basketRepository, ICalculationService calculationService)
         {

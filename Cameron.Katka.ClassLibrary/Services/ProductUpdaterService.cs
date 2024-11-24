@@ -6,7 +6,7 @@ namespace Cameron.Katka.ClassLibrary.Services
 {
     internal class ProductUpdaterService : IProductUpdaterService
     {
-        IProductTypeUpdaterService _productTypeUpdaterService;
+        private readonly IProductTypeUpdaterService _productTypeUpdaterService;
 
         public ProductUpdaterService(IProductTypeUpdaterService productTypeUpdaterService)
         {

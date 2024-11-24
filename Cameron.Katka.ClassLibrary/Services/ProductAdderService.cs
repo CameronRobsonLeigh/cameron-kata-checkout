@@ -1,17 +1,11 @@
-﻿using Cameron.Katka.ClassLibrary.Contexts;
-using Cameron.Katka.ClassLibrary.Interfaces;
+﻿using Cameron.Katka.ClassLibrary.Interfaces;
 using Cameron.Katka.ClassLibrary.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cameron.Katka.ClassLibrary.Services
 {
     internal class ProductAdderService : IProductAdderService
     {
-        IProductDbContext _productContext;
+        private readonly IProductDbContext _productContext;
 
         public ProductAdderService(IProductDbContext productContext)
         {

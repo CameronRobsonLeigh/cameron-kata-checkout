@@ -5,10 +5,10 @@ namespace Cameron.Katka.ClassLibrary.Services
 {
     internal class ProductService : IProductService
     {
-        IProductDbContext _productContext;
-        IProductAdderService _productAdderService;
-        IProductTypeUpdaterService _productTypeUpdaterService;
-        IProductUpdaterService _productUpdaterService;
+        private readonly IProductDbContext _productContext;
+        private readonly IProductAdderService _productAdderService;
+        private readonly IProductTypeUpdaterService _productTypeUpdaterService;
+        private readonly IProductUpdaterService _productUpdaterService;
 
         public ProductService(IProductDbContext productContext, IProductAdderService productAdderService, IProductTypeUpdaterService productTypeUpdaterService, IProductUpdaterService productUpdaterService)
         {
