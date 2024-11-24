@@ -23,7 +23,6 @@ namespace Cameron.Katka.UnitTests
             }
         }
 
-        // Basic product test, kept this in a seperate set of tests in case we ever need to ammend the original structure
         [Test]
         public void ProductRepository_FindProduct_Should_Return_Product_With_Valid_Properties()
         {
@@ -38,7 +37,6 @@ namespace Cameron.Katka.UnitTests
             }
         }
 
-        // Not a requirement for the task, but just showing capability of repositories and adhering to Single Responsibility
         [Test]
         public void ProductRepository_FindAllDiscountedProducts_Should_Return_NonEmpty_List()
         {
